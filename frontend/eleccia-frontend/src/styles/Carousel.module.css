@@ -24,32 +24,42 @@
   height: 500px; /* más espacio vertical para que entren imagen + círculo */
   margin-bottom: 60px; /* separa los botones del círculo */
   position: relative;
+
 }
 
 
 .mainWrapper {
-  width: 400px;       /* antes 240px */
-  height: 400px;
+  width: 385px;
+  height: 350px;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 20%, #ffffff, #9c9c9c);
-
-  overflow: hidden;
   position: absolute;
-  top: 60px;          /* se baja para compensar el tamaño */
+  top: 60px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.imageContainer {
+  width: 425px;
+  height: 500px;
+  position: absolute;
+  top: -150px;
+  border-radius: 50%;
+  overflow: hidden;    
+}
 
 
 /* Main Candidate */
 .mainImage {
-  width: 320px;       
-  height: 460px;      
+  width: 500px;       
+  height: 500px;      
 
   position: absolute;
-  top: -70px;         
+  top: 20px;         
   left: 50%;
   transform: translateX(-50%);
 
@@ -58,7 +68,10 @@
 
   z-index: 2;
   transition: transform 0.4s ease;
+
 }
+
+
 
 
 .sideWrapper {

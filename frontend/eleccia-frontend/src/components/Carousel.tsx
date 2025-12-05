@@ -42,15 +42,18 @@ export default function Carousel() {
         </div>
 
         {/* Main */}
-        <div className={styles.mainWrapper}></div>
-
-        <img
-          src={current.image}
-          alt={current.name}
-          className={`${styles.mainImage} ${
-            direction === "left" ? styles.slideRight : styles.slideLeft
-          }`}
-        />
+        <div className={styles.mainWrapper}>
+        <div className={styles.imageContainer}>
+            <img 
+            src={current.image}
+            alt={current.name}
+            className={`${styles.mainImage} ${
+                direction === "left" ? styles.slideRight : styles.slideLeft
+            }`}
+            />
+        </div>
+        </div>
+        
 
         {/* Right */}
         <div className={`${styles.sideWrapper} ${styles.right}`}>
