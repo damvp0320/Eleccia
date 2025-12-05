@@ -1,2 +1,3 @@
 # Eleccia
-Plataforma web que presenta las propuestas de los candidatos presidenciales de forma clara, visual y sencilla. Su objetivo es ayudar a los ciudadanos a entender y comparar las ideas de cada candidato sin tecnicismos ni información dispersa, promoviendo decisiones electorales más informadas 🤝🇨🇴.
+Web platform that presents the proposals of the presidential candidates in a clear, visual and simple way. Its objective is to help citizens understand and compare the ideas of each candidate without technicalities or dispersed information, promoting more informed electoral decisions.🤝🇨🇴.
+
