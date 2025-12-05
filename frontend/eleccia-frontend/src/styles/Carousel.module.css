@@ -29,8 +29,8 @@
 
 
 .mainWrapper {
-  width: 385px;
-  height: 350px;
+  width: 357px;
+  height: 346px;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 20%, #ffffff, #9c9c9c);
   position: absolute;
@@ -44,12 +44,12 @@
 }
 
 .imageContainer {
-  width: 425px;
-  height: 500px;
+  width: 359px;
+  height: 493px;
   position: absolute;
   top: -150px;
-  border-radius: 50%;
-  overflow: hidden;    
+  border-radius: 40%;
+  overflow: hidden;  
 }
 
 
