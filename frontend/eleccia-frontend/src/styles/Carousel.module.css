@@ -1,0 +1,160 @@
+.carouselContainer {
+  text-align: center;
+  padding-top: 40px;
+  position: relative;
+
+  /* NEW */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  height: 100vh;              /* ocupa toda la pantalla */
+}
+
+.candidateName {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 100px;   /* separa más el nombre del candidato */
+  margin-top: -20px;     /* lo sube visualmente */
+  position: relative;
+  z-index: 5;            /* asegura que nunca quede detrás de la imagen */
+}
+
+.wheel {
+  height: 500px; /* más espacio vertical para que entren imagen + círculo */
+  margin-bottom: 60px; /* separa los botones del círculo */
+  position: relative;
+}
+
+
+.mainWrapper {
+  width: 400px;       /* antes 240px */
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 20%, #ffffff, #9c9c9c);
+
+  overflow: hidden;
+  position: absolute;
+  top: 60px;          /* se baja para compensar el tamaño */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+
+
+/* Main Candidate */
+.mainImage {
+  width: 320px;       
+  height: 460px;      
+
+  position: absolute;
+  top: -70px;         
+  left: 50%;
+  transform: translateX(-50%);
+
+  object-fit: cover;
+  object-position: center top;
+
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+
+.sideWrapper {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;           /* <-- Recorta la imagen lateral */
+  position: absolute;
+  top: 80px;
+  z-index: 1;
+  background: radial-gradient(circle, #ffffff, #bdbdbd);
+}
+
+
+
+/* Side Candidates */
+.sideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  opacity: 0.8;
+}
+
+
+/* Left */
+.left {
+  left: 10%;
+
+}
+
+/* Right */
+.right {
+  right: 10%;
+
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.button {
+  padding: 12px 18px;
+  background: #ddd;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.button:hover {
+  background: black;
+  color: white;
+}
+/* ====== MAIN SLIDE ANIMATIONS ====== */
+
+
+.slideLeft {
+  animation: slideLeft 0.5s ease;
+}
+
+.slideRight {
+  animation: slideRight 0.5s ease;
+}
+
+@keyframes slideLeft {
+  0%   { transform: translateX(40px); opacity: 0; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideRight {
+  0%   { transform: translateX(-40px); opacity: 0; }
+  100% { transform: translateX(0);      opacity: 1; }
+}
+
+/* ====== SIDE IMAGE ANIMATIONS ====== */
+
+.animateLeft {
+  animation: sideLeft 0.5s ease forwards;
+}
+
+.animateRight {
+  animation: sideRight 0.5s ease forwards;
+}
+
+@keyframes sideLeft {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 0.8; transform: translateX(0); }
+}
+
+@keyframes sideRight {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 0.8; transform: translateX(0); }
+}
