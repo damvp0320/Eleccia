@@ -4,6 +4,7 @@ import styles from "../styles/ModalCandidate.module.css";
 import type { Candidate } from "../data/candidates";
 import { candidates } from "../data/candidates";
 import { candidateDetails } from "../data/candidatesDetails";
+import { useNavigate } from "react-router-dom";
 
 interface ModalProps {
   candidate: Candidate;
@@ -16,6 +17,7 @@ export default function CandidateModal({ candidate, onClose }: ModalProps) {
   const [search, setSearch] = useState("");
   const [selectedCandidates, setSelectedCandidates] = useState<number[]>([]);
   const [showComparison, setShowComparison] = useState(false);
+  const navigate = useNavigate();
 
   const categoryRef = useRef<HTMLDivElement>(null);
 
@@ -81,10 +83,16 @@ export default function CandidateModal({ candidate, onClose }: ModalProps) {
             <button className={styles.optionBtn} onClick={() => setShowCompare(true)}>
                 Comparar esta categoría
             </button>
-            <button className={styles.optionBtn}>
-                Ver mas informacion
+            <button
+              className={styles.optionBtn}
+              onClick={() => {
+                onClose();                     // Cierra modal
+                navigate(`/candidate/${candidate.id}`);  // Luego navega
+              }}
+            >
+              Ver más información
             </button>
-            <button className={styles.optionBtn}>
+            <button className={styles.optionBtn} >
                 Exportar
             </button>
             </div>

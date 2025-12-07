@@ -1,12 +1,13 @@
 import "./App.css";
 import Carousel from "./components/Carousel";
+import CandidatePage from "./pages/CandidatePage";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Carousel />  
-    </div>
+    <Routes>
+      <Route path="/" element={<Carousel />} />
+      <Route path="/candidate/:id" element={<CandidatePage />} />
+    </Routes>
   );
 }
-
-export default App;

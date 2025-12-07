@@ -32,6 +32,28 @@ export default function Carousel() {
   const left = candidates[(index - 1 + total) % total];
   const right = candidates[(index + 1) % total];
 
+  // Filtrar resultados
+  const searchResults = candidates.filter(c =>
+    c.name.toLowerCase().includes(search.toLowerCase())
+  );
+  const goToCandidate = (id: number) => {
+    const targetIndex = candidates.findIndex(c => c.id === id);
+
+    if (targetIndex === index) return; // Ya está en pantalla
+
+    // Decidir si mover hacia la derecha o izquierda
+    if (targetIndex > index) {
+      setDirection("right");
+    } else {
+      setDirection("left");
+    }
+
+    setIndex(targetIndex);
+    setAnimationKey((prev) => prev + 1);
+    setSearch(""); // limpiar búsqueda
+  };
+
+
   return (
     <>
       <div className={styles.carouselContainer}>
@@ -77,12 +99,14 @@ export default function Carousel() {
         </div>
         <div className={styles.controlsContainer}>
           <div className={styles.searchBarContainer}>
-            <SearchBar
-              value={search}
-              onChange={setSearch}
-              placeholder="Buscar candidato..."
-              width="300px"
-            />
+          <SearchBar
+            value={search}
+            onChange={setSearch}
+            placeholder="Buscar candidato..."
+            width="300px"
+            results={searchResults}
+            onSelect={goToCandidate}
+          />
           </div>
           <div className={styles.buttons}>
             <button onClick={prev} className={styles.button}>←</button>
