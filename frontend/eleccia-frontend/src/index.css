@@ -1,24 +1,98 @@
-/* RESET BÁSICO */
+/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Fondo blanco, como tu diseño */
-body {
-  background-color: #ffffff;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
-/* No centrar todo automáticamente */
-body {
-  display: block;
-  min-height: 100vh;
-}
-
-/* Reset de botones — los estilos vendrán de tus CSS modules */
 button {
   all: unset;
   cursor: pointer;
+}
+
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: block;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === LIGHT THEME (default) === */
+:root {
+  --bg:               #ffffff;
+  --bg-subtle:        #f7f8fc;
+  --bg-hover:         #f0f0f0;
+  --bg-card:          #ffffff;
+  --bg-muted:         #f4f4f4;
+  --bg-accent-light:  #eef2ff;
+
+  --border:           #e8e8e8;
+  --border-input:     #9b9b9b;
+
+  --text-primary:     #000000;
+  --text-secondary:   #444444;
+  --text-muted:       #888888;
+  --text-faint:       #aaaaaa;
+
+  --accent:           #1a3fa8;
+  --accent-hover:     #142f80;
+  --accent-shadow:    rgba(26, 63, 168, 0.25);
+  --accent-shadow-lg: rgba(26, 63, 168, 0.35);
+
+  --carousel-from:    #eef2ff;
+  --carousel-to:      #ffffff;
+  --circle-gradient:  radial-gradient(circle at 50% 20%, #ffffff, #9c9c9c);
+  --side-gradient:    radial-gradient(circle, #ffffff, #bdbdbd);
+
+  --shadow-sm:        0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:        0 6px 18px rgba(0,0,0,0.12);
+  --shadow-lg:        0 10px 40px rgba(0,0,0,0.22);
+  --shadow-panel:     0 5px 30px rgba(0,0,0,0.25);
+
+  --overlay-bg:       rgba(0, 0, 0, 0.55);
+  --compare-overlay:  rgba(0, 0, 0, 0.35);
+
+  --scrollbar-thumb:  #b5b5b5;
+  --nav-btn-bg:       rgba(255, 255, 255, 0.85);
+}
+
+/* === DARK THEME === */
+[data-theme="dark"] {
+  --bg:               #0f1117;
+  --bg-subtle:        #1a1d27;
+  --bg-hover:         #252836;
+  --bg-card:          #1a1d27;
+  --bg-muted:         #252836;
+  --bg-accent-light:  #1a2550;
+
+  --border:           #2d3145;
+  --border-input:     #4a5068;
+
+  --text-primary:     #f0f0f0;
+  --text-secondary:   #a0a8c0;
+  --text-muted:       #606880;
+  --text-faint:       #505870;
+
+  --accent:           #4a6fe8;
+  --accent-hover:     #3558d0;
+  --accent-shadow:    rgba(74, 111, 232, 0.25);
+  --accent-shadow-lg: rgba(74, 111, 232, 0.35);
+
+  --carousel-from:    #151929;
+  --carousel-to:      #0f1117;
+  --circle-gradient:  radial-gradient(circle at 50% 20%, #2a2d3e, #1a1d27);
+  --side-gradient:    radial-gradient(circle, #2a2d3e, #1a1d27);
+
+  --shadow-sm:        0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md:        0 6px 18px rgba(0,0,0,0.4);
+  --shadow-lg:        0 10px 40px rgba(0,0,0,0.5);
+  --shadow-panel:     0 5px 30px rgba(0,0,0,0.5);
+
+  --overlay-bg:       rgba(0, 0, 0, 0.75);
+  --compare-overlay:  rgba(0, 0, 0, 0.6);
+
+  --scrollbar-thumb:  #3a3f55;
+  --nav-btn-bg:       rgba(26, 29, 39, 0.85);
 }
