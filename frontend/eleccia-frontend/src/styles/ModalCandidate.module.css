@@ -1,46 +1,39 @@
-/* === Overlay negro con blur === */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: var(--overlay-bg);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
   animation: fadeIn 0.25s ease forwards;
-
 }
 
 .compareOverlay {
   position: absolute;
   inset: 0;
   backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.35);
+  background: var(--compare-overlay);
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
-/* === Contenedor principal === */
 .modal {
   width: 1100px;
   height: 550px;
   max-width: 95%;
-  background: #fff;
+  background: var(--bg-card);
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   padding: 30px;
   border-radius: 22px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.22);
+  box-shadow: var(--shadow-lg);
   animation: scaleIn 0.3s ease forwards;
-  
-
 }
 
-/* === Animaciones === */
 @keyframes scaleIn {
   0% { transform: scale(0.85) translateY(10px); opacity: 0; }
   100% { transform: scale(1) translateY(0); opacity: 1; }
@@ -51,14 +44,12 @@
   to   { opacity: 1; }
 }
 
-/* === LAYOUT FLEX: foto izquierda, texto derecha === */
 .content {
   display: flex;
-    align-items: center;
+  align-items: center;
   gap: 25px;
 }
 
-/* === Imagen del candidato === */
 .photoWrapper {
   display: flex;
   justify-content: center;
@@ -69,10 +60,9 @@
   height: 400px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-md);
 }
 
-/* === Lado derecho === */
 .info {
   display: flex;
   flex-direction: column;
@@ -82,10 +72,10 @@
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 18px;
+  color: var(--text-primary);
 }
 
 /* === Categorías === */
-/* === CONTENEDOR GENERAL DE CATEGORÍAS (flechas + slider) === */
 .categoryContainer {
   display: flex;
   align-items: center;
@@ -94,31 +84,29 @@
   width: 500px;
 }
 
-/* === Flechas === */
 .navLeft,
 .navRight {
   padding: 8px 12px;
-  background: #e6e6e6;
+  background: var(--bg-hover);
   border-radius: 8px;
   border: none;
   cursor: pointer;
   font-size: 18px;
+  color: var(--text-primary);
   transition: 0.2s ease;
 }
 
 .navLeft:hover,
 .navRight:hover {
-  background: black;
+  background: var(--accent);
   color: white;
 }
 
-/* === Ventana del carrusel (oculta overflow) === */
 .categoryViewport {
   overflow: hidden;
   width: 100%;
 }
 
-/* === Pista scrollable de categorías (horizontal) === */
 .categoryTrack {
   display: flex;
   gap: 12px;
@@ -126,35 +114,34 @@
   padding-bottom: 5px;
 }
 
-/* === Botones de categoría === */
 .categoryBtn {
   padding: 8px 16px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  background: #ececec;
+  background: var(--bg-hover);
+  color: var(--text-secondary);
   transition: 0.2s ease-in-out;
-  white-space: nowrap; /* Evita que se parta en varias líneas */
+  white-space: nowrap;
 }
 
 .categoryBtn:hover {
-  background: #d5d5d5;
+  background: var(--bg-muted);
+  color: var(--text-primary);
 }
 
 .active {
-  background: black;
+  background: var(--accent);
   color: white;
   font-weight: 600;
 }
 
-
-/* === Scroll de propuestas === */
+/* === Propuestas === */
 .proposalsScroll {
   height: 210px;
   overflow-y: auto;
   padding-right: 8px;
-
 }
 
 .proposalsScroll::-webkit-scrollbar {
@@ -162,35 +149,44 @@
 }
 
 .proposalsScroll::-webkit-scrollbar-thumb {
-  background: #b5b5b5;
+  background: var(--scrollbar-thumb);
   border-radius: 8px;
 }
 
 .proposal {
   margin: 10px 0;
   font-size: 17px;
+  color: var(--text-secondary);
 }
 
-/* === Panel selección de candidatos === */
+/* === Panel selección === */
 .selectPanel {
   width: 500px;
   height: 500px;
-  background: white;
+  background: var(--bg-card);
   padding: 25px;
   border-radius: 18px;
-  box-shadow: 0 5px 30px rgba(0,0,0,0.25);
+  box-shadow: var(--shadow-panel);
   animation: fadeIn 0.25s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.compareTitle {
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
 .searchInput {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-input);
   margin-bottom: 15px;
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  outline: none;
 }
 
 .candidateList {
@@ -205,10 +201,20 @@
   display: flex;
   gap: 10px;
   font-size: 16px;
-  background: #f4f4f4;
+  background: var(--bg-muted);
+  color: var(--text-secondary);
   padding: 10px;
   border-radius: 10px;
   align-items: center;
+}
+
+.candidateItem:hover {
+  cursor: pointer;
+}
+
+.candidateItem input[type="checkbox"] {
+  display: none;
+  cursor: pointer;
 }
 
 /* === Botón comparar === */
@@ -216,7 +222,7 @@
   margin-top: 18px;
   padding: 10px;
   width: 100%;
-  background: black;
+  background: var(--accent);
   color: white;
   border-radius: 12px;
   border: none;
@@ -225,39 +231,62 @@
 }
 
 .compareNow:disabled {
-  background: #888;
+  background: var(--text-muted);
   cursor: not-allowed;
   width: auto;
+}
+
+.closeCompare {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+  transition: background 0.15s ease;
+}
+
+.closeCompare:hover {
+  background: var(--border);
 }
 
 /* === Panel de comparación final === */
 .comparePanel {
   width: 600px;
-  background: white;
+  background: var(--bg-card);
   padding: 25px;
   border-radius: 18px;
-  box-shadow: 0 5px 30px rgba(0,0,0,0.25);
+  box-shadow: var(--shadow-panel);
   animation: fadeIn 0.25s ease;
-  
+}
+
+.compareList {
+  margin: 16px 0;
 }
 
 .compareItem {
   padding: 10px;
-  background: #eee;
+  background: var(--bg-muted);
   border-radius: 10px;
   margin-bottom: 10px;
+  color: var(--text-secondary);
 }
 
+.compareItem strong {
+  color: var(--text-primary);
+}
 
 .selectedCandidateItem {
-  background: #000;
+  background: var(--accent);
   color: #fff;
-  border: 2px solid #333;
-  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  border: 2px solid var(--accent-hover);
+  box-shadow: 0 0 8px var(--accent-shadow);
   transform: scale(1.02);
 }
-
-
 
 .optionsContainer {
   margin-top: 20px;
@@ -266,9 +295,10 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .optionBtn {
   padding: 12px 20px;
-  background: #000;
+  background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -276,22 +306,15 @@
   font-size: 15px;
   font-weight: 500;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px var(--accent-shadow);
 }
 
 .optionBtn:hover {
-  background: #222;
+  background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px var(--accent-shadow-lg);
 }
 
 .optionBtn:active {
   transform: scale(0.97);
-}
-.candidateItem input[type="checkbox"] {
-  display: none;
-  cursor: pointer;
-}
-.candidateItem:hover {
-  cursor: pointer;
 }

@@ -2,46 +2,45 @@
   text-align: center;
   padding-top: 40px;
   position: relative;
-
-  /* NEW */
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* centra verticalmente */
-  height: 100vh;              /* ocupa toda la pantalla */
+  justify-content: center;
+  height: calc(100vh - 72px);
+  background: linear-gradient(160deg, var(--carousel-from) 0%, var(--carousel-to) 50%);
+  transition: background 0.3s ease;
 }
 
 .candidateName {
   font-size: 32px;
   font-weight: 300;
   letter-spacing: 2px;
-  margin-bottom: 100px;   /* separa más el nombre del candidato */
-  margin-top: -20px;     /* lo sube visualmente */
+  margin-bottom: 100px;
+  margin-top: -20px;
   position: relative;
-  z-index: 5;            /* asegura que nunca quede detrás de la imagen */
+  z-index: 5;
+  color: var(--text-primary);
 }
 
 .wheel {
-  height: 500px; /* más espacio vertical para que entren imagen + círculo */
-  margin-bottom: 60px; /* separa los botones del círculo */
+  height: 500px;
+  margin-bottom: 60px;
   position: relative;
-
 }
-
 
 .mainWrapper {
   width: 357px;
   height: 346px;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 20%, #ffffff, #9c9c9c);
+  background: var(--circle-gradient);
   position: absolute;
   top: 60px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .imageContainer {
@@ -50,43 +49,33 @@
   position: absolute;
   top: -150px;
   border-radius: 40%;
-  overflow: hidden;  
+  overflow: hidden;
 }
-
 
 /* Main Candidate */
 .mainImage {
-  width: 500px;       
-  height: 500px;      
-
+  width: 500px;
+  height: 500px;
   position: absolute;
-  top: 20px;         
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-
   object-fit: cover;
   object-position: center top;
-
   z-index: 2;
   transition: transform 0.4s ease;
-
 }
-
-
-
 
 .sideWrapper {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  overflow: hidden;           /* <-- Recorta la imagen lateral */
+  overflow: hidden;
   position: absolute;
   top: 80px;
   z-index: 1;
-  background: radial-gradient(circle, #ffffff, #bdbdbd);
+  background: var(--side-gradient);
 }
-
-
 
 /* Side Candidates */
 .sideImage {
@@ -95,59 +84,68 @@
   object-fit: cover;
   filter: grayscale(20%);
   opacity: 0.8;
-  
 }
-
 
 /* Left */
 .left {
   left: 10%;
-
 }
 
 /* Right */
 .right {
   right: 10%;
-
 }
 
 .searchBarContainer {
   display: flex;
   justify-content: center;
 }
+
 .controlsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-    transform: translateY(-100px); /* súbelo sin afectar nada */
+  transform: translateY(-80px);
 }
 
-
-/* Buttons */
-.buttons {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.button {
-  padding: 12px 18px;
-  background: #ddd;
-  border: none;
+/* Floating nav buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
+  background: var(--nav-btn-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
   cursor: pointer;
-  font-size: 20px;
-  transition: 0.2s ease-in-out;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.button:hover {
-  background: black;
+.navButton:hover {
+  background: var(--accent);
   color: white;
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 8px 24px var(--accent-shadow);
 }
+
+.navLeft {
+  left: 32px;
+}
+
+.navRight {
+  right: 32px;
+}
+
 /* ====== MAIN SLIDE ANIMATIONS ====== */
-
-
 .slideLeft {
   animation: slideLeft 0.5s ease;
 }
@@ -167,7 +165,6 @@
 }
 
 /* ====== SIDE IMAGE ANIMATIONS ====== */
-
 .animateLeft {
   animation: sideLeft 0.5s ease forwards;
 }
@@ -185,4 +182,3 @@
   0% { opacity: 0; transform: translateX(-50px); }
   100% { opacity: 0.8; transform: translateX(0); }
 }
-

@@ -2,12 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import styles from "../styles/SearchBar.module.css";
 
+interface SearchResult {
+  id: number;
+  name: string;
+  image?: string;
+}
+
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   width?: string;
-  results?: { id: number; name: string }[];
+  results?: SearchResult[];
   onSelect?: (id: number) => void;
 }
 
@@ -17,13 +23,11 @@ export default function SearchBar({
   placeholder,
   width,
   results = [],
-  onSelect
+  onSelect,
 }: SearchBarProps) {
-
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Reset highlight when results change
   useEffect(() => {
     setHighlightedIndex(0);
   }, [results]);
@@ -33,23 +37,18 @@ export default function SearchBar({
 
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      setHighlightedIndex((prev) =>
-        prev + 1 < results.length ? prev + 1 : 0
-      );
+      setHighlightedIndex((prev) => (prev + 1 < results.length ? prev + 1 : 0));
     }
-
     if (e.key === "ArrowUp") {
       e.preventDefault();
-      setHighlightedIndex((prev) =>
-        prev - 1 >= 0 ? prev - 1 : results.length - 1
-      );
+      setHighlightedIndex((prev) => (prev - 1 >= 0 ? prev - 1 : results.length - 1));
     }
-
     if (e.key === "Enter") {
       e.preventDefault();
       const selected = results[highlightedIndex];
       if (selected && onSelect) {
         onSelect(selected.id);
+        onChange("");
       }
     }
   };
@@ -57,6 +56,7 @@ export default function SearchBar({
   return (
     <div className={styles.wrapper} style={{ width }}>
       <div className={styles.searchWrapper}>
+        <Search className={styles.icon} size={20} />
         <input
           ref={inputRef}
           type="text"
@@ -66,22 +66,24 @@ export default function SearchBar({
           placeholder={placeholder ?? "Buscar candidato..."}
           onKeyDown={handleKeyDown}
         />
-        <Search className={styles.icon} size={18} />
+        {value && (
+          <button className={styles.clearBtn} onClick={() => onChange("")}>✕</button>
+        )}
       </div>
 
-      {/* Dropdown */}
       {value.trim() !== "" && results.length > 0 && (
         <div className={styles.dropdown}>
           {results.map((c, i) => (
             <div
               key={c.id}
-              className={`${styles.dropdownItem} ${
-                highlightedIndex === i ? styles.activeItem : ""
-              }`}
+              className={`${styles.dropdownItem} ${highlightedIndex === i ? styles.activeItem : ""}`}
               onMouseEnter={() => setHighlightedIndex(i)}
-              onClick={() => onSelect && onSelect(c.id)}
+              onClick={() => { onSelect && onSelect(c.id); onChange(""); }}
             >
-              {c.name}
+              {c.image && (
+                <img src={c.image} alt={c.name} className={styles.dropdownPhoto} />
+              )}
+              <span>{c.name}</span>
             </div>
           ))}
         </div>

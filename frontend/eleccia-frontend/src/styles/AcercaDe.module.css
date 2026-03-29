@@ -1,0 +1,112 @@
+.page {
+  min-height: calc(100vh - 72px);
+  background: linear-gradient(160deg, var(--carousel-from) 0%, var(--carousel-to) 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px 60px;
+  gap: 60px;
+}
+
+/* === Hero === */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  max-width: 700px;
+}
+
+.flag {
+  font-size: 48px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.subtitle strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === Mission === */
+.mission {
+  max-width: 640px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 44px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.missionText {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* === Feature cards === */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.accentIcon {
+  color: var(--accent);
+  display: flex;
+}
+
+.missionIcon {
+  color: var(--accent);
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardText {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
