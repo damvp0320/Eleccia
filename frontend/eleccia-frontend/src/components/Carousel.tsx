@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { candidates } from "../data/candidates";
 import type { Candidate } from "../data/candidates";
 import styles from "../styles/Carousel.module.css";
@@ -31,9 +32,9 @@ export default function Carousel() {
   const left = candidates[(index - 1 + total) % total];
   const right = candidates[(index + 1) % total];
 
-  const searchResults = candidates.filter((c) =>
-    c.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const searchResults = candidates
+    .filter((c) => c.name.toLowerCase().includes(search.toLowerCase()))
+    .map((c) => ({ id: c.id, name: c.name, image: c.image }));
 
   const goToCandidate = (id: number) => {
     const targetIndex = candidates.findIndex((c) => c.id === id);
@@ -61,20 +62,23 @@ export default function Carousel() {
           <CarouselImage image={right.image} name={right.name} position="right" direction={direction} />
         </div>
 
+        <button onClick={prev} className={`${styles.navButton} ${styles.navLeft}`}>
+          <ChevronLeft size={28} />
+        </button>
+        <button onClick={next} className={`${styles.navButton} ${styles.navRight}`}>
+          <ChevronRight size={28} />
+        </button>
+
         <div className={styles.controlsContainer}>
           <div className={styles.searchBarContainer}>
             <SearchBar
               value={search}
               onChange={setSearch}
               placeholder="Buscar candidato..."
-              width="300px"
+              width="460px"
               results={searchResults}
               onSelect={goToCandidate}
             />
-          </div>
-          <div className={styles.buttons}>
-            <button onClick={prev} className={styles.button}>←</button>
-            <button onClick={next} className={styles.button}>→</button>
           </div>
         </div>
       </div>
